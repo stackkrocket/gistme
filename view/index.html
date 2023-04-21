@@ -1,0 +1,1063 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GistMe App</title>
+
+    <!-- ICONS -->
+    <link rel="stylesheet" href="/assets/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    
+    <!-- navbar -->
+    <nav>
+        <div class="container">
+            <h2 class="logo">GistMe</h2>
+            <form class="search-bar">
+                
+                <input type="search" name="search" id="search" 
+                placeholder="Search for creators, inspiration, and projects" data-search-bar>
+                <button id="submit" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            <div class="create">
+                <button class="btn-primary" for="create-post" id="post-type">
+                    <h3>Create</h3> 
+                    <i class="fas fa-plus"></i>
+                </button>
+                <div class="profile-photo">
+                    <img src="/assets/images/profile-1.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <!-- left -->
+            <div class="left">
+                <a href="#" class="profile">
+                    <div class="profile-photo">
+                        <img src="/assets/images/profile-1.jpg" alt="">
+                    </div>
+                    <div class="handle">
+                        <h4>Lukman Yusuf</h4>
+                        <p class="text-muted">@SayYesToViolence</p>
+                    </div>
+                </a>
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <a href="#" class="menu-item active">
+                        <span><i class="fas fa-home"><small class="notification-count">6</small></i></span>
+                        <span class="dashboard">
+                            <h3>Dashboard</h3>
+                            <span class="text-muted tribe-name">(The Saints)</span>
+                        </span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <span>
+                            <i class="fas fa-map-marker-alt"></i></span>
+                            <h3>Explore</h3>
+                    </a>
+                    <a href="#" class="menu-item" id="notifications">
+                        <span><i class="far fa-bell"><small class="notification-count">
+                            9+</small></i></span><h3>Notifications</h3>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <span><i class="far fa-bookmark"></i></span>
+                        <h3>Bookmarks</h3>
+                    </a>
+                    <a href="#" class="menu-item" id="theme">
+                        <span><i class="fas fa-paint-roller"></i></span>
+                        <h3>Theme</h3> 
+                    </a>
+                    <a href="#" class="menu-item">
+                        <span><i class="fas fa-cog"></i></span>
+                        <h3>Settings</h3>
+                    </a>           
+                </div>
+                <!-- sidebar ends -->
+            </div>
+
+            <!-- middle -->
+            <div class="middle">
+                <h2 class="followed-gist">From stories you follow</h2>
+                <div class="stories">
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="/assets/images/profile-8.jpg" alt="">
+                        </div>
+                        <p class="name">Megumi Fushiguro</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="/assets/images/profile-9.jpg" alt="">
+                        </div>
+                        <p class="name">Izuku Midoriya</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="/assets/images/profile-10.jpg" alt="">
+                        </div>
+                        <p class="name">Jigen Otsutsuki</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="/assets/images/profile-11.jpg" alt="">
+                        </div>
+                        <p class="name">Killua Zoldyck</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="/assets/images/profile-12.jpg" alt="">
+                        </div>
+                        <p class="name">Nagi Shigeo</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="/assets/images/profile-13.jpg" alt="">
+                        </div>
+                        <p class="name">Uchiha Itachi</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="/assets/images/profile-8.jpg" alt="">
+                        </div>
+                        <p class="name">Megumi Fushiguro</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="/assets/images/profile-9.jpg" alt="">
+                        </div>
+                        <p class="name">Izuku Midoriya</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="/assets/images/profile-10.jpg" alt="">
+                        </div>
+                        <p class="name">Jigen Otsutsuki</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="/assets/images/profile-11.jpg" alt="">
+                        </div>
+                        <p class="name">Killua Zoldyck</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="/assets/images/profile-12.jpg" alt="">
+                        </div>
+                        <p class="name">Nagi Shigeo</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="/assets/images/profile-13.jpg" alt="">
+                        </div>
+                        <p class="name">Uchiha Itachi</p>
+                    </div>
+                </div>
+                <!------------ Stories end here------------>
+
+                <!-- ---------feeds-------------- -->
+                <div class="feeds">
+                    <h2 class="tribe-activity">Based on your tribe activity</h2>
+
+                    <div class="livestream-container">
+                        <div class="streams">
+                            <div class="stream">
+                                <div class="streamer">
+                                    <img src="/assets/images/profile-13.jpg" alt="" class="profile-photo">
+
+                                    <div class="stream-title">
+                                        <h3><b class="streamer-name">YM . Ashraf</b> started a livestream</h3>
+                                        <span class="stream-post-time">2</span>
+                                        <span class="stream-post-time-format">SECS</span>
+                                        <span>AGO</span>
+                                    </div>
+                                </div>
+                                <button class="connect btn">
+                                    <p>Join</p>
+                                    <i class="fas fa-video"></i>
+                                </button>
+                            </div>
+
+                            <div class="stream">
+                                <div class="streamer">
+                                    <img src="/assets/images/profile-3.jpg" alt="" class="profile-photo">
+
+                                    <div class="stream-title">
+                                        <h3><b class="streamer-name">YA . Lukman</b> started a livestream</h3>
+                                        <span class="stream-post-time">3</span>
+                                        <span class="stream-post-time-format">SECS</span>
+                                        <span>AGO</span>
+                                    </div>
+                                </div>
+                                <button class="connect btn">
+                                    <p>Join</p>
+                                    <i class="fas fa-video"></i>
+                                </button>
+                            </div>
+
+                            <div class="stream">
+                                <div class="streamer">
+                                    <img src="/assets/images/profile-5.jpg" alt="" class="profile-photo">
+
+                                    <div class="stream-title">
+                                        <h3><b class="streamer-name">YM . Rabiu</b> started a livestream</h3>
+                                        <span class="stream-post-time">10</span>
+                                        <span class="stream-post-time-format">SECS</span>
+                                        <span>AGO</span>
+                                    </div>
+                                </div>
+                                <button class="connect btn">
+                                    <p>Join</p>
+                                    <i class="fas fa-video"></i>
+                                </button>
+                            </div>
+
+                            <div class="stream">
+                                <div class="streamer">
+                                    <img src="/assets/images/profile-9.jpg" alt="" class="profile-photo">
+
+                                    <div class="stream-title">
+                                        <h3><b class="streamer-name">YI . Juwairah</b> started a livestream</h3>
+                                        <span class="stream-post-time">29</span>
+                                        <span class="stream-post-time-format">SECS</span>
+                                        <span>AGO</span>
+                                    </div>
+                                </div>
+                                <button class="connect btn">
+                                    <p>Join</p>
+                                    <i class="fas fa-video"></i>
+                                </button>
+                            </div>
+
+                            <div class="stream">
+                                <div class="streamer">
+                                    <img src="/assets/images/profile-17.jpg" alt="" class="profile-photo">
+
+                                    <div class="stream-title">
+                                        <h3><b class="streamer-name">YO . Bahira</b> started a livestream</h3>
+                                        <span class="stream-post-time">2</span>
+                                        <span class="stream-post-time-format">MINS</span>
+                                        <span>AGO</span>
+                                    </div>
+                                </div>
+                                <button class="connect btn">
+                                    <p>Join</p>
+                                    <i class="fas fa-video"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="feed single" dataset="single-post">
+                        <div class="head">
+                            <div class="user">
+                                <div class="profile-photo">
+                                    <img src="/assets/images/profile-14.jpg" class="profile-photo" alt="">
+                                </div>
+                                <div class="info">
+                                    <h3>Natsuki Subaru</h3>
+                                    <small>
+                                        <i title="Public" class="fa fa-globe privacy-status"></i>
+                                        <span class="location">Dubai</span>, 
+                                        <span class="time-posted">15 MINUTES</span> AGO
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="edit"> 
+                                <i class="fas fa-ellipsis-h edit-btn"></i>
+                            </div>
+                        </div>
+                        <!-- caption div -->
+                        <div class="caption">
+                            <p><b>Kamado Tanjirou</b> Lorem ipsum, dolor sit amet consectetur adipisicing 
+                                elit. Voluptate vero cum eos culpa explicabo architecto laboriosam veritatis 
+                                facilis, totam dolores quasi nobis dolorum magni porro? 
+                                <span class="hash-tag">#JujutsuKaisen</span>
+                                <span class="hash-tag">#GojoSatoru</span>
+                            </p>
+                        </div>
+                        <!-- Action btns -->
+                        <div class="action-buttons">
+                            <div class="interaction-buttons">
+                                <span>
+                                    <i class="far fa-heart like-button"></i>
+                                    <small class="like-count">2.5<span class="unit">M</span></small>
+                                </span>
+                                <span>
+                                    <i class="far fa-comment"></i>
+                                    <small class="comment-count">56<span class="unit">K</span></small>
+
+                                    <!-- <div class="comment-box">
+                                        <input type="text" name="text" id="comment" placeholder="Reply....">
+                                    </div> -->
+                                </span>
+                                <span>
+                                    <i class="fas fa-share-alt"></i>
+                                    <small class="share-count">18.9<span class="unit">K</span></small>
+                                </span>
+                            </div>
+                            <div class="bookmark">
+                                <span>
+                                    <i class="far fa-bookmark bookmark-btn"></i>
+                                </span>
+                            </div>
+                        </div>     
+                        
+                        <!-- similar likes -->
+                        <div class="view-more">
+                            <a href="#">
+                                View replies...
+                            </a>
+                        </div> 
+                    </div>
+
+                    <div class="feed thread series" dataset="series-only">
+                        <div class="thread-img-container">
+                            <img src="/assets/images/profile-6.jpg" alt="" class="profile-photo">
+                            <div class="thread-line"></div>
+                            <img src="/assets/images/profile-6.jpg" alt="" class="profile-photo">
+                        </div>
+
+                        <div class="thread-container">
+                            <div class="head">
+                                <div class="user">
+                                    <div class="info">
+                                        <h3>Isagi Yoichi</h3>
+                                        <small>
+                                            <i title="Public" class="fa fa-globe privacy-status"></i>
+                                            <span class="location">Konoha</span>, 
+                                            <span class="time-posted">1 SEC</span> AGO
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="edit"> 
+                                    <i class="fas fa-ellipsis-h edit-btn"></i>
+                                </div>
+                            </div>
+
+                            <!-- caption div -->
+                            <div class="caption">
+                                <p><b>Kamado Tanjirou</b> Lorem ipsum, dolor sit amet consectetur adipisicing 
+                                    elit. Voluptate vero cum eos culpa explicabo architecto laboriosam veritatis 
+                                    facilis, totam dolores quasi nobis dolorum magni porro? 
+                                    <span class="hash-tag">#JujutsuKaisen</span>
+                                    <span class="hash-tag">#GojoSatoru</span>
+                                </p>
+                            </div>
+
+                            <!-- Action btns -->
+                            <div class="live-card-action-buttons">
+                                <div class="left-action-buttons">
+                                    <div class="button">
+                                        <i class="far fa-heart like-button"></i>
+                                        <div>
+                                            <span class="like-count">2.5</span>
+                                            <span class="count-unit">M</span>
+                                        </div>
+                                    </div>
+                                    <div class="button">
+                                        <i class="far fa-comment comment-button"></i>
+                                        <div>
+                                            <span class="comment-count">56</span>
+                                            <span class="count-unit">K</span>
+                                        </div>
+                                    </div>
+                                    <div class="button">
+                                        <i class="fas fa-share-alt"></i>
+                                        <div>
+                                            <span class="like-count">18.9</span>
+                                            <span class="count-unit">K</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="right-action-button">
+                                    <div class="bookmark">
+                                        <span>
+                                            <i class="far fa-bookmark bookmark-btn"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="view-more">
+                                <a href="#">
+                                    Show more...
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feed box-office-post" dataset="box-office">
+                        <div class="head">
+                            <div class="user">
+                                <div class="profile-photo">
+                                    <img src="/assets/images/profile-4.jpg" class="profile-photo" alt="">
+                                </div>
+                                <div class="info">
+                                    <h3>Ulqiorra Arrancar_4</h3>
+                                    <small>
+                                        <i title="Public" class="fa fa-globe privacy-status"></i>
+                                        <span class="location">Hueco mundo</span>, 
+                                        <span class="time-posted">2 MINUTES</span> AGO
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="edit"> 
+                                <i class="fas fa-ellipsis-h edit-btn"></i>
+                            </div>
+                        </div>                        
+                        <!-- feed photo -->
+                        <div class="photo">
+                            <video src="/assets/videos/2.mp4" poster="/assets/poster/1.png" controls></video>
+                        </div>
+
+                        <div class="views">
+                            <i class="far fa-eye text-muted"></i>
+                            <p class="text-muted">3M Views</p>
+                        </div>
+                        <!-- Action btns -->
+                        <div class="action-buttons">
+                            <div class="interaction-buttons">
+                                <span>
+                                    <i class="far fa-heart like-button"></i>
+                                    <small class="like-count">2.5<span class="unit">M</span></small>
+                                </span>
+                                <span>
+                                    <i class="far fa-comment"></i>
+                                    <small class="comment-count">56<span class="unit">K</span></small>
+                                </span>
+                                <span>
+                                    <i class="fas fa-share-alt"></i>
+                                    <small class="share-count">18.9<span class="unit">K</span></small>
+                                </span>
+                            </div>
+                            <div class="bookmark">
+                                <span>
+                                    <i class="far fa-bookmark bookmark-btn"></i>
+                                </span>
+                            </div>
+                        </div>     
+                        
+                        <!-- similar likes -->
+                        <div class="view-more">
+                            <a href="#">
+                                View replies...
+                            </a>
+                        </div> 
+                    </div>
+
+                    <div class="feed thread soap-opera-post" dataset="soap-opera-only">
+                        <div class="thread-img-container">
+                            <img src="/assets/images/profile-19.jpg" alt="" class="profile-photo">
+                            <div class="thread-line"></div>
+                            <img src="/assets/images/profile-19.jpg" alt="" class="profile-photo">
+                        </div>
+
+                        <div class="thread-container">
+                            <div class="head">
+                                <div class="user">
+                                    <div class="info">
+                                        <h3>Isagi Yoichi</h3>
+                                        <small>
+                                            <i title="Public" class="fa fa-globe privacy-status"></i>
+                                            <span class="location">Konoha</span>, 
+                                            <span class="time-posted">1 SEC</span> AGO
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="edit"> 
+                                    <i class="fas fa-ellipsis-h edit-btn"></i>
+                                </div>
+                            </div>
+
+                            <div class="live-card-caption">
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing 
+                                    elit. 
+                                    <span class="hash-tag">#JumpFesta</span>
+                                    <span class="hash-tag">#OnePiece</span>
+                                </p>
+                            </div>
+
+                            <!-- feed photo -->
+                            <div class="photo">
+                                <video src="/assets/videos/2.mp4" poster="/assets/poster/1.png" controls></video>
+                            </div>
+
+                            <!-- Action btns -->
+                            <div class="live-card-action-buttons">
+                                <div class="left-action-buttons">
+                                    <div class="button">
+                                        <i class="far fa-heart like-button"></i>
+                                        <div>
+                                            <span class="like-count">2.5</span>
+                                            <span class="count-unit">M</span>
+                                        </div>
+                                    </div>
+                                    <div class="button">
+                                        <i class="far fa-comment comment-button"></i>
+                                        <div>
+                                            <span class="comment-count">56</span>
+                                            <span class="count-unit">K</span>
+                                        </div>
+                                    </div>
+                                    <div class="button">
+                                        <i class="fas fa-share-alt"></i>
+                                        <div>
+                                            <span class="like-count">18.9</span>
+                                            <span class="count-unit">K</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="right-action-button">
+                                    <div class="bookmark">
+                                        <span>
+                                            <i class="far fa-bookmark bookmark-btn"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="view-more">
+                                <a href="#">
+                                    Show more...
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feed thread audio-post" dataset="audio-only">
+                        <div class="thread-img-container">
+                            <img src="/assets/images/profile-9.jpg" alt="" class="profile-photo">
+                            <div class="thread-line"></div>
+                            <img src="/assets/images/profile-9.jpg" alt="" class="profile-photo">
+                        </div>
+
+                        <div class="thread-container">
+                            <div class="head">
+                                <div class="user">
+                                    <div class="info">
+                                        <h3>Isagi Yoichi</h3>
+                                        <small>
+                                            <i title="Public" class="fa fa-globe privacy-status"></i>
+                                            <span class="location">Konoha</span>, 
+                                            <span class="time-posted">1 SEC</span> AGO
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="edit"> 
+                                    <i class="fas fa-ellipsis-h edit-btn"></i>
+                                </div>
+                            </div>
+
+                            <div class="live-card-caption">
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing 
+                                    elit. 
+                                    <span class="hash-tag">#JumpFesta</span>
+                                    <span class="hash-tag">#OnePiece</span>
+                                </p>
+                            </div>
+
+                            <div class="live-card">
+                                <div class="top-section">
+                                    <i class="fas fa-circle"></i>
+                                    <h3 class="broadcast-status">LIVE</h3>
+                                </div>
+                                <div class="middle-section">
+                                    <div class="audio-title">
+                                        <h2>Let's talk about how messi won the world cup</h2>
+                                    </div>
+                                    <div class="listeners">
+                                        <img class="profile-photo" src="/assets/images/profile-10.jpg" alt="">
+                                        <img class="profile-photo" src="/assets/images/profile-12.jpg" alt="">
+                                        <img class="profile-photo" src="/assets/images/profile-20.jpg" alt="">
+                                        <div class="others">+10</div>
+                                    </div>
+                                </div>
+                                <div class="bottom-section">
+                                    <button class="btn" id="listen-button">
+                                        Start Listening
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Action btns -->
+                            <div class="live-card-action-buttons">
+                                <div class="left-action-buttons">
+                                    <div class="button">
+                                        <i class="far fa-heart like-button"></i>
+                                        <div>
+                                            <span class="like-count">2.5</span>
+                                            <span class="count-unit">M</span>
+                                        </div>
+                                    </div>
+                                    <div class="button">
+                                        <i class="far fa-comment comment-button"></i>
+                                        <div>
+                                            <span class="comment-count">56</span>
+                                            <span class="count-unit">K</span>
+                                        </div>
+                                    </div>
+                                    <div class="button">
+                                        <i class="fas fa-share-alt"></i>
+                                        <div>
+                                            <span class="like-count">18.9</span>
+                                            <span class="count-unit">K</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="right-action-button">
+                                    <div class="bookmark">
+                                        <span>
+                                            <i class="far fa-bookmark bookmark-btn"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="view-more">
+                                <a href="#">
+                                    Show replies...
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Theme customization -->
+    <div class="customize-theme">
+        <div class="card">
+            <button id="close-theme-modal"><i class="fa fa-close"></i></button>
+            <h2>Customize your experience</h2>
+            <p class="text-muted">Manage your font size, color, and background.</p>
+            <!-- font sizes -->
+            <div class="font-size">
+                <h4>Font Size</h4>
+                <div>
+                    <h6>Aa</h6>
+                    <div class="choose-size">
+                        <span class="font-size-1"></span>
+                        <span class="font-size-2"></span>
+                        <span class="font-size-3"></span>
+                        <span class="font-size-4"></span>
+                        <span class="font-size-5"></span>
+                    </div>
+                    <h3></h3>
+                </div>
+            </div>
+
+            <!-- primary colors -->
+            <div class="color">
+                <h4>Color</h4>
+                <div class="choose-color">
+                    <span class="color-1 active"></span>
+                    <span class="color-2"></span>
+                    <span class="color-3"></span>
+                    <span class="color-4"></span>
+                    <span class="color-5"></span>
+                </div>
+            </div>
+
+            <!-- Background colors -->
+            <div class="background">
+                <h4>Background</h4>
+                <div class="choose-bg">
+                    <div class="bg-1" id="bg-1">
+                        <span></span>
+                        <h5 for="bg-1">Light</h5>
+                    </div>
+                    <div class="bg-2" id="bg-2">
+                        <span></span>
+                        <h5>Dim</h5>
+                    </div>
+                    <div class="bg-3" id="bg-3">
+                        <span></span>
+                        <h5 for="bg-3">Lights Out</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Popup -->
+    <div class="edit-popup-container" id="edit-popup">
+        <div class="edit-popup-card" id="edit-card">
+            <button id="close-edit-popup-btn">
+                <i class="fas fa-close"></i>
+            </button>
+            <div class="edit-popup">
+                <ul>
+                    <li class="edit-option">
+                        <i class="fas fa-bell"></i>
+                        <p class="follow-gist">Follow gist</p>
+                    </li>
+                    <li class="edit-option bookmark-btn" id="bookmark-edit-button">
+                        <i class="fas fa-bookmark"></i>
+                        <p>Bookmark</p>
+                    </li>
+                    <li class="edit-option">
+                        <i class="fas fa-volume-mute"></i>
+                        <p>Mute 
+                            <span id="GisterID" class="color-primary">@natsuki_</span>
+                        </p>
+                    </li>
+                    <li class="edit-option">
+                        <i class="fas fa-user-shield"></i>
+                        <p>Block 
+                            <span id="GisterID" class="color-primary">@natsuki_</span>
+                        </p>
+                    </li>
+                    <li class="copy-text edit-option">
+                        <i class="fas fa-copy"></i>
+                        <p title="Copy" class="copied-link">Copy link to gist</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bookmark Alert -->
+    <div class="bookmark-container" id="bookmark-popup">
+        <i class="fas fa-check check-mark"></i>
+        <p id="JS-editable">You have successfully added this gist to your bookmark.
+            <a href="#" class="color-primary">Open gist</a>
+        </p>
+        <span>
+            <i class="fas fa-close" id="close-bookmark"></i>
+        </span>
+    </div>
+
+    <!-- Create post -->
+    <div class="create-post-container" id="create-post-container">
+        <div class="create-post-card" id="create-post-card">
+            <div>
+                <div class="post-control-buttons">
+                    <div></div>
+    
+                    <div class="post-options">
+                        <button id="save-gist" class="btn">Save as Draft</button>
+                        <button type="submit" id="post-gist" class="btn btn-primary">Post Gist</button>
+                    </div>
+                </div>
+    
+                <div class="post-type-container">
+                    <ul>
+                        <li>
+                            <i class="fa fa-circle"></i>
+                            <small>You are only allowed to select one post-type.</small>
+                        </li>
+                    </ul>
+                    <div style="position: relative;">
+                        <button class="default" id="default">
+                            Select post type...
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <small id="warning"></small>
+                        <div class="filter-buttons" id="dropdown-filter-buttons">
+                            <label class="filter-label"id="Single">Single</label>
+                            <label class="filter-label"id="Series">Series</label>
+                            <label class="filter-label"id="Novel">Novel</label>
+                            <label class="filter-label"id="Box-office">Box-office</label>
+                            <label class="filter-label"id="Soap-opera">Soap Opera</label>
+                            <label class="filter-label"id="Radio">Radio</label>
+                            <label class="filter-label"id="LiveStream">LiveStream</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-types">
+                <!----------------single-post-type ------------->
+                <div id="single_post" class="single-post" data-post>
+                    <div class="post-area">
+                        <!-- <div class="profile-photo">
+                            <img src="/assets/images/profile-1.jpg" alt="">
+                        </div> -->
+                        <div class="text-container">
+                            <textarea name="post" id="" cols="30" rows="10" 
+                                placeholder="What's on your mind?" maxlength="50" onclick="hideDropdownFilter()"></textarea>
+                            <div class="text-controls text-muted">
+                                <span>Max:</span> 
+                                <span id="max-word">250</span> 
+                                <span> words</span>
+                            </div>
+                        </div>
+                    </div>
+        
+                    
+                </div>
+
+                <!-------------- series-post ----------------->
+                <div id="series_post" class="series-post" data-post>
+                    <!-- <div class="profile-picture">
+                        <img src="/assets/images/profile-1.jpg" alt="">
+                    </div> -->
+
+                    <div class="text-section">
+                        <div id="text-container">
+                            <textarea name="series" id="serie" cols="30" rows="7" 
+                            placeholder="What's on your mind?"></textarea>
+                        </div>
+                        <button class="add-section" id="add-section-button">
+                            Add Section
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-------------- novel-post ----------------->
+                <div id="novel_post" class="novel-post" data-post>
+                    mhkjnj
+                </div>
+
+                <!-------------- video-only-post ----------------->
+                <div id="video_only" class="Box-office" data-post>
+                    <!-- <div class="profile-picture">
+                        <img src="/assets/images/profile-1.jpg" alt="">
+                    </div> -->
+                    <div class="upload-center">
+                        <div class="caption-container">
+                            <!-- <i class="fas fa-pencil-alt"></i> -->
+                            <textarea name="caption" id="caption" class="caption" cols="30" rows="2"
+                            placeholder="Add a caption..."></textarea>
+                        </div>
+                        <div class="video-input-area">
+                            <div class="file-upload-container">
+                                <video id="output" aria-placeholder="Upload Video"></video>
+                            </div>
+                            <input type="file" hidden accept="video/*" id="file" onchange="loadFile(event)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-------------- video-only-post ----------------->
+                <div id="video-series" class="Soap-opera" data-post>
+                    <div class="series" id="series-wrapper">
+                        <div class="serie">
+                            <div class="caption-wrapper">
+                                <textarea id="caption-for-vid-series" cols="30" rows="2"
+                                placeholder="Add caption"></textarea>
+                            </div>
+                            <div class="video-wrapper">
+                                <div class="series-vid-container">
+                                    <video id="serie-video"></video>
+                                </div>
+                                <input type="file" name="video" accept="video/*" id="seriesVids" onchange="handleFileUpload();" hidden>
+                                <label  
+                                for="seriesVids" style="display: flex; align-items: center; gap: .35rem; margin-bottom: 2rem;
+                                padding: 0 var(--card-padding) 0;">
+                                    <i class="fas fa-video 1x"></i>
+                                    <h1 style="font-size: 16px;">Upload video</h1>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-section" id="add-vid-button" style="margin-top: 2rem;">
+                        Add Section
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+
+                <!-------------- audio_post ----------------->
+                <div id="audio_post" class="Radio" data-post>
+                    <div class="stream-topic">
+                        <ol>
+                            <li>
+                                <div class="topic">
+                                    <p>Topic/Title <span class="must">*</span></p>
+                                    <input type="text" name="topic" id="topic" required placeholder="Add title">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="description">
+                                    <p>Description <span class="must">*</span></p>
+                                    <textarea name="description" id="desc" cols="30" rows="10" 
+                                    required placeholder="Add description"></textarea>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tags">
+                                    <span>
+                                        <p>Tags</p>
+                                        <small class="text-muted">Note: All tags must begin with "#". e.g. #JumpFesta</small>
+                                    </span>
+                                    <textarea name="tags" id="tags" cols="30" rows="10" placeholder="Add tags"></textarea>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="stream-wrapper">
+                        <div class="video-wrapper">
+                            <audio controls id="audio" autoplay loop></audio>
+                        </div>
+                        <div class="trigger-buttons">
+                            <div class="stream-trigger" id="start">
+                                <button id="start-trigger" onclick="startAudio()">
+                                    <i class="fas fa-video"></i>
+                                </button>
+                                <p class="text-muted">Record</p>
+                            </div>
+                            <div class="stream-trigger" id="pause">
+                                <button id="stop-trigger" onclick="pauseAudio()">
+                                    <i class="fas fa-pause"></i>
+                                </button>
+                                <p class="text-muted">Pause</p>
+                            </div>
+                            <div class="stream-trigger" id="stop">
+                                <button id="stop-trigger" onclick="stop()">
+                                    <i class="fas fa-circle"></i>
+                                </button>
+                                <p class="text-muted">Stop</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-------------- Single post ----------------->
+                <div id="live_stream" class="LiveStream" data-post>
+                    <div class="stream-topic">
+                        <ol>
+                            <li>
+                                <div class="topic">
+                                    <p>Topic/Title <span class="must">*</span></p>
+                                    <input type="text" name="topic" id="topic" required placeholder="Add title">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="description">
+                                    <p>Description <span class="must">*</span></p>
+                                    <textarea name="description" id="desc" cols="30" rows="10" 
+                                    required placeholder="Add description"></textarea>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tags">
+                                    <span>
+                                        <p>Tags</p>
+                                        <small class="text-muted">Note: All tags must begin with "#". e.g. #JumpFesta</small>
+                                    </span>
+                                    <textarea name="tags" id="tags" cols="30" rows="10" placeholder="Add tags"></textarea>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="stream-wrapper">
+                        <div class="video-wrapper">
+                            <video id="video" autoplay playsinline></video>
+                        </div>
+                        <div class="trigger-buttons">
+                            <div class="stream-trigger" id="start">
+                                <button id="start-trigger" onclick="startVideo()">
+                                    <i class="fas fa-video"></i>
+                                </button>
+                                <p class="text-muted">Record</p>
+                            </div>
+                            <div class="stream-trigger" id="pause">
+                                <button id="stop-trigger" onclick="pauseVideo()">
+                                    <i class="fas fa-pause"></i>
+                                </button>
+                                <p class="text-muted">Pause</p>
+                            </div>
+                            <div class="stream-trigger" id="stop">
+                                <button id="stop-trigger" onclick="stop()">
+                                    <i class="fas fa-circle"></i>
+                                </button>
+                                <p class="text-muted">Stop</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-status">
+                <div class="privacy-selector-container">
+                    <button class="privacy-selector" id="privacy-selector">
+                        <span class="privacy-type" id="privacy-type">
+                            <span>
+                                <i class="fa fa-globe"></i>
+                                <p>Public</p>
+                            </span>
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+                    </button>
+    
+                    <div class="privacy-type-container">
+                        <span class="privacy-type">
+                            <i class="fa fa-globe"></i>
+                            <p>Public</p>
+                            <i class="fa fa-info-circle" title="Everyone can see this post"></i>
+                        </span>
+                        <span class="privacy-type">
+                            <i class="fas fa-lock"></i>
+                            <p>Trybe</p>
+                            <i class="fa fa-info-circle" title="Only trybe members can see this post"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="upload-control-buttons" id="file-upload-buttons">
+                    <div class="img-upload" id="imgIcon">
+                        <label for="img-input">
+                            <i class="fas fa-images fa-1x"></i>
+                        </label>
+                    </div>
+                    <div class="vid-upload" id="vidIcon">
+                        <label for="file">
+                            <i class="fas fa-video fa-1x"></i>
+                            <h1>Upload Video</h1>
+                        </label>  
+                    </div>
+                    <!-- <div class="serie-vid-upload" id="AddvidIcon">
+                        <label for="seriesVids">
+                            <i class="fas fa-video fa-1x"></i>
+                            <h1>Add Video</h1>
+                        </label>  
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Sidebar -->
+    <div class="fixed-iconbar">
+        <div class="iconbar">
+            <a href="#" class="menu-item active" title="Dashboard">
+                <span><i class="fas fa-home"></i>
+                <span class="dashboard">
+                </span>
+            </a>
+            <a href="#" class="menu-item" title="Explore">
+                <span>
+                    <i class="fas fa-map-marker-alt"></i></span>
+            </a>
+            <a href="#" class="menu-item" id="notifications" title="Notifications">
+                <span><i class="far fa-bell"><small class="notification-count">
+                    9+</small></i></span>
+            </a>
+            <a href="#" class="menu-item" title="Bookmarks">
+                <span><i class="far fa-bookmark"></i></span>
+            </a>
+            <a href="#" class="menu-item" id="theme" title="Customize your experience">
+                <span><i class="fas fa-paint-roller"></i></span>
+            </a>
+            <a href="#" class="menu-item" title="Settings">
+                <span><i class="fas fa-cog"></i></span>
+            </a>      
+        </div>     
+    </div>
+
+
+    <!-- Custom JS -->
+    <script src="/assets/js/app.js"></script>
+</body>
+</html>

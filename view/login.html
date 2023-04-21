@@ -1,0 +1,96 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login_page</title>
+
+    <!-- ICONS -->
+    <link rel="stylesheet" href="/assets/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+
+    <!-- animations -->
+    <link rel="stylesheet" href="/assets/css/animate.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/login.css">
+</head>
+<body>
+    
+    <div class="form-container">
+        <div class="form">
+            <div class="showcase">
+                <h1 class="animated fadeInLeft">Are you a new <br> Gister?</h1>
+                <p class="text-muted animated fadeInRight">Create an account to stay connected.</p>
+                <a href="/register" class="animated fadeInUp">
+                    <button type="button" class="btn btn-primary">Sign Up</button>
+                </a>
+            </div>
+            <form action="/login" method="POST" class="form-card animated fadeIn">
+                <div class="login page" id="login">
+                    <div class="card-top">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <h1>Welcome back Gister!</h1>
+                        <small class="text-muted">Please sign in to your account</small>
+                    </div>
+                    <div class="card-content">
+                        <div class="name">
+                            <label class="text-muted" for="email">Email</label>
+                            <div class="input-box">
+                                <input type="email" id="email" name="email" required>
+                                <i class="fa fa-user text-muted"></i>
+                            </div>
+                        </div>
+                        <div class="password">
+                            <label class="text-muted" for="password">Password</label>
+                            <div class="input-box">
+                                <input type="password" id="password" required>
+                                <i class="fa fa-lock text-muted"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="remember-me">
+                            <div class="toggle-container" id="toggle">
+                                <span class="toggler" id="toggle-button"></span>
+                            </div>
+                            <small class="text-muted">remember me?</small>
+                        </div>
+                        <div class="password-reset">
+                            <a href="#">forgot password?</a>
+                        </div>
+                    </div>
+                    <button type="submit" id="submit-button" class="btn btn-primary">
+                        Login
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <div class="divider">
+                        <span class="line"></span>
+                        <p>or</p>
+                        <span class="line"></span>
+                    </div>
+                    <div class="alt">
+                        <small class="text-muted">Sign In with:</small>
+                        <div class="social-links">
+                            <a href="#">
+                                <img src="/assets/images/icons/facebook_64.png" alt="">
+                            </a>
+                            <a href="#">
+                                <img src="/assets/images/icons/google_64.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mobile-visible">
+                        <p>Are you a new Gister?</p>
+                        <a href="register.html">Sign Up</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Custom JS -->
+    <script src="/assets/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register_page</title>
+
+    <!-- ICONS -->
+    <link rel="stylesheet" href="../assets/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+
+    <!-- animations -->
+    <link rel="stylesheet" href="../assets/css/animate.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/register.css">
+</head>
+<body>
+    
+    <div class="form-container">
+        <div class="form">
+            <div class="showcase">
+                <h1 class="animated fadeInLeft">Have an account already?</h1>
+                <p class="animated fadeInRight">Please sign in to your account to continue.</p>
+                <a href="/login" class="animated fadeInUp">
+                    <button type="button" class="btn btn-primary">Sign In</button>
+                </a>
+            </div>
+            <form action="/register" method="POST" class="form-card animated fadeIn">
+                <div class="login page" id="login">
+                    <div class="card-top">
+                        <i class="fas fa-user-circle"></i>
+                        <h1>Create account!</h1>
+                    </div>
+                    <div class="card-content">
+                        <div class="name">
+                            <label class="text-muted" for="name">Name</label>
+                            <div class="input-box">
+                                <input type="text" id="name" name="name" required>
+                                <i class="fa fa-user text-muted"></i>
+                            </div>
+                        </div>
+                        <div class="email">
+                            <label class="text-muted" for="email">Email</label>
+                            <div class="input-box">
+                                <input type="email" id="email" name="email" required>
+                                <i class="fas fa-envelope text-muted"></i>
+                            </div>
+                        </div>
+                        <div class="password">
+                            <label class="text-muted" for="password">Password</label>
+                            <div class="input-box">
+                                <input type="password" id="password" name="password" min="8" required>
+                                <i class="fa fa-lock text-muted"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" id="submit-button" class="btn btn-primary">
+                        Sign Up
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <div class="divider">
+                        <span class="line"></span>
+                        <p>or</p>
+                        <span class="line"></span>
+                    </div>
+                    <div class="alt">
+                        <small class="text-muted">Sign up using:</small>
+                        <div class="social-links">
+                            <a href="#">
+                                <img src="../assets/images/icons/facebook_64.png" alt="">
+                            </a>
+                            <a href="#">
+                                <img src="../assets/images/icons/google_64.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mobile-visible">
+                        <p>Already a Gister?</p>
+                        <a href="login.html">Sign In</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Custom JS -->
+    <script src="../assets/js/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+.env
+go.mod
+go.sum
+.air.toml
+tmp
+.vscode
+.prettierrc
+GistMe.exe
