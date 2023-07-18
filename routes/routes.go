@@ -15,9 +15,10 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
+	"golang.org/x/crypto/bcrypt"
 )
 
-var users *models.User
+var users models.User
 
 // var collection *mongo.Client
 var tmpl, err = template.ParseGlob("./view/*.html")
@@ -87,30 +88,34 @@ func RegisterUser(w http.ResponseWriter, r *http.Request) *helpers.ErrorField {
 	email := r.FormValue("email")
 	password := r.FormValue("password")
 
-	//hash the password before being saved to db
-	HashedPassword, _ := helpers.PasswordHash(password)
-	//fmt.Println(HashedPassword)
+	HashedPassword, err := helpers.PasswordHash(password)
+	if err != nil {
+		panic("Password could not be hashed...")
+	}
 
 	coll := client.Database(os.Getenv("DBNAME")).Collection("users")
-	users = &models.User{Name: name, Email: email, Password: HashedPassword}
+	users = models.User{Name: name, Email: email, Password: HashedPassword}
 
 	if (users.Name != "") && (users.Email != "") && (users.Password != "") {
 		result, err := coll.InsertOne(ctx, users)
 		if err != nil {
 			return &helpers.ErrorField{Error: err, Message: "Internal Server Error: Could not register User", Code: 500}
 		}
-		fmt.Println(result.InsertedID)
+		fmt.Println(result.InsertedID, users.Password)
 		http.Redirect(w, r, "/auth", http.StatusMovedPermanently)
 	}
 	return nil
 }
 
 func LoginUser(w http.ResponseWriter, r *http.Request) *helpers.ErrorField {
+	//a struct to unmarshal the returned JSON from the database
+	var result *models.User
+
 	helpers.LoadEnv()
 	//Establish atlas cluster connection here
 	client, err := mongo.NewClient(options.Client().ApplyURI(os.Getenv("DB_CONNECTIONSTRING")))
 	if err != nil {
-		return &helpers.ErrorField{Error: err, Message: "server error: could not establish a connection with the server", Code: 500}
+		log.Println(err)
 	}
 
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
@@ -118,39 +123,44 @@ func LoginUser(w http.ResponseWriter, r *http.Request) *helpers.ErrorField {
 	err = client.Connect(ctx)
 
 	if err != nil {
-		return &helpers.ErrorField{Error: err, Message: "Could not establish connection with database", Code: 500}
+		log.Println(err)
 	}
 
 	defer client.Disconnect(ctx)
 
 	err = client.Ping(ctx, readpref.Primary())
 	if err != nil {
-		return &helpers.ErrorField{Error: err, Message: "Database took too long to respond", Code: 500}
+		log.Println(err)
 	}
 
 	r.ParseForm()
-
 	email := r.FormValue("email")
 	password := r.FormValue("password")
 
-	//fmt.Println(email)
-	coll := client.Database(os.Getenv("DBNAME")).Collection("users")
+	//retrieve a document providing the email
+	coll := client.Database("gistme").Collection("users")
 	filter := bson.D{{Key: "email", Value: email}}
-	var result *models.User
 
 	err = coll.FindOne(ctx, filter).Decode(&result)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
-			return &helpers.ErrorField{Error: err, Message: "User does not exist", Code: 500}
+			log.Fatalln("Status 500: Could not find any matching documents")
 		}
-		log.Println("Internal server error")
 	}
-	//fmt.Println(result.Password)
-	match, _ := helpers.CompareHash(result.Password, password)
+	fmt.Println(result.Email, result.Password)
 
-	if match {
-		http.Redirect(w, r, "/auth", http.StatusAccepted)
-		return nil
+	/*if result.Email == email && err == nil {
+		log.Println("Authentication Succesful!")
+		http.Redirect(w, r, "/auth", http.StatusMovedPermanently)
 	}
-	return &helpers.ErrorField{Error: err, Message: "Password Incorrect", Code: 500}
+
+	log.Println("Email or password do not match")*/
+
+	if bcrypt.CompareHashAndPassword([]byte(result.Password), []byte(password)); err != nil {
+		return &helpers.ErrorField{Error: err, Message: "", Code: 500}
+	}
+
+	log.Println("Authentication successful")
+	http.Redirect(w, r, "/auth", http.StatusMovedPermanently)
+	return nil
 }

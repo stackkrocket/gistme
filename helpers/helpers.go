@@ -1,6 +1,7 @@
 package helpers
 
 import (
+	"encoding/base64"
 	"log"
 	"net/http"
 	"os"
@@ -40,14 +41,30 @@ func LoadEnv() string {
 }
 
 func PasswordHash(password string) (string, error) {
-	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
-	return string(bytes), err
+	bytes, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+	if err != nil {
+		return "", err
+	}
+
+	/*
+		it appears mongodb requires a standard encoding to actually store the hash in the correct format
+		without the encoding/base64 package, when you try to login, and the function
+		attempts to compare supposed stored to the plain text
+		equivalent, it returns a weird 'HashedSecret too small to be a bcrypt password".
+		At this moment, this seems to work. Althouh,
+		I am putting in more research to ensure there was not another reason for the error
+
+	*/
+	encodedPassword := base64.StdEncoding.EncodeToString(bytes)
+	return string(encodedPassword), nil
 }
 
-func CompareHash(hash, password string) (bool, string) {
+/*func CompareHash(hash, password string) bool {
 	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
 	if err != nil {
-		return false, "Hash and Password do not match! Check your Password again!"
+		log.Fatalln(err)
+		return false
 	}
-	return true, "Password Match! You may continue Login"
-}
+	log.Println("Success! You may proceed!...")
+	return true
+}*/
