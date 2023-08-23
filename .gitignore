@@ -1,4 +1,4 @@
-.env
+app.env
 go.mod
 go.sum
 .air.toml

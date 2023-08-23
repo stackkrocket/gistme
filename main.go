@@ -17,7 +17,7 @@ func main() {
 	helpers.LoadEnv()
 	//serves as the main entry point and build of the app
 	router := mux.NewRouter()
-	db.ConnectDB()
+	db.DBInstance()
 
 	//serve assets
 	fs := http.FileServer(http.Dir("./assets"))

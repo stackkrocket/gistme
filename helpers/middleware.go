@@ -43,3 +43,26 @@ func CheckHeaderPost(next http.Handler) http.Handler {
 
 	})
 }
+
+//Authorize user before granting access to Requested API
+
+func Authenticate(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		clientToken := r.Header.Get("access_token")
+
+		if clientToken == "" {
+			panic("Could not retrieve credentials. Make sure you are logged in")
+		}
+
+		claims, err := ValidateToken(clientToken)
+		if err != "" {
+			panic("credentials not validated")
+		}
+
+		r.Header.Set("email", claims.Email)
+		r.Header.Set("name", claims.Name)
+		r.Header.Set("uid", claims.Uid)
+
+		next.ServeHTTP(w, r)
+	})
+}

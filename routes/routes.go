@@ -3,65 +3,77 @@ package routes
 import (
 	"context"
 	"fmt"
-	"html/template"
 	"log"
 	"net/http"
 	"os"
 	"time"
 
+	"github.com/joho/godotenv"
 	"github.com/stackkrocket/GistMe/helpers"
 	"github.com/stackkrocket/GistMe/models"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 	"golang.org/x/crypto/bcrypt"
 )
 
-var users models.User
-
-// var collection *mongo.Client
-var tmpl, err = template.ParseGlob("./view/*.html")
-
 func HomePage(w http.ResponseWriter, r *http.Request) *helpers.ErrorField {
-	w.Header().Set("Content-Type", "text/html")
-	err = tmpl.ExecuteTemplate(w, "index.html", nil)
-	if err != nil {
-		return &helpers.ErrorField{Error: err, Message: "error parsing template", Code: 404}
-	}
+	path := "./view/index.html"
+	responseChan := make(chan []byte)
+
+	go ServeHTMLPage(path, responseChan)
+	htmlBytes := <-responseChan
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.Write(htmlBytes)
+
 	return nil
 }
 
 func RegisterPage(w http.ResponseWriter, r *http.Request) *helpers.ErrorField {
-	w.Header().Set("Content-Type", "text/html")
-	err = tmpl.ExecuteTemplate(w, "register.html", nil)
-	if err != nil {
-		return &helpers.ErrorField{Error: err, Message: "error parsing template", Code: 404}
-	}
+	path := "./view/register.html"
+	responseChan := make(chan []byte)
+
+	go ServeHTMLPage(path, responseChan)
+	htmlBytes := <-responseChan
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.Write(htmlBytes)
+
 	return nil
 }
 
 func LoginPage(w http.ResponseWriter, r *http.Request) *helpers.ErrorField {
-	w.Header().Set("Content-Type", "text/html")
-	err = tmpl.ExecuteTemplate(w, "login.html", nil)
-	if err != nil {
-		return &helpers.ErrorField{Error: err, Message: "error parsing template", Code: 404}
-	}
+	path := "./view/login.html"
+	responseChan := make(chan []byte)
+
+	go ServeHTMLPage(path, responseChan)
+	htmlBytes := <-responseChan
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.Write(htmlBytes)
+
 	return nil
 }
 
 func AuthPage(w http.ResponseWriter, r *http.Request) *helpers.ErrorField {
-	w.Header().Set("Content-Type", "text/html")
-	err = tmpl.ExecuteTemplate(w, "authPage.html", nil)
-	if err != nil {
-		return &helpers.ErrorField{Error: err, Message: "error parsing template", Code: 404}
-	}
+	path := "./view/authPage.html"
+	responseChan := make(chan []byte)
+
+	go ServeHTMLPage(path, responseChan)
+	htmlBytes := <-responseChan
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.Write(htmlBytes)
+
 	return nil
 }
 
 func RegisterUser(w http.ResponseWriter, r *http.Request) *helpers.ErrorField {
-	helpers.LoadEnv()
-	//Establish atlas cluster connection here
+
+	err := godotenv.Load("app.env")
+	if err != nil {
+		log.Fatalln("Could not load file: ", err)
+	}
+
 	client, err := mongo.NewClient(options.Client().ApplyURI(os.Getenv("DB_CONNECTIONSTRING")))
 	if err != nil {
 		return &helpers.ErrorField{Error: err, Message: "server error: could not establish a connection with the server", Code: 500}
@@ -69,6 +81,7 @@ func RegisterUser(w http.ResponseWriter, r *http.Request) *helpers.ErrorField {
 
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
+
 	err = client.Connect(ctx)
 
 	if err != nil {
@@ -84,24 +97,52 @@ func RegisterUser(w http.ResponseWriter, r *http.Request) *helpers.ErrorField {
 
 	r.ParseForm()
 
+	id := primitive.NewObjectID()
 	name := r.FormValue("name")
 	email := r.FormValue("email")
+	phone := r.FormValue("phone")
 	password := r.FormValue("password")
+	HashedPassword, _ := helpers.PasswordHash(password)
+	role := "user"
+	verified := false
+	user_id := id.Hex()
+	access_token, refresh_token, _ := helpers.GenerateAllToken(name, email, user_id)
+	created_at, _ := time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
+	updated_at, _ := time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 
-	HashedPassword, err := helpers.PasswordHash(password)
-	if err != nil {
-		panic("Password could not be hashed...")
+	coll := client.Database("gistme").Collection("users")
+	var user models.User
+
+	//check for an existing user by email, if found, panic
+	//otherwise register user
+	filter := bson.D{{Key: "email", Value: email}}
+	err = coll.FindOne(ctx, filter).Decode(&user)
+
+	if user.Email == email {
+		return &helpers.ErrorField{Error: err, Message: "user already exists. Try login or user another email", Code: 500}
 	}
 
-	coll := client.Database(os.Getenv("DBNAME")).Collection("users")
-	users = models.User{Name: name, Email: email, Password: HashedPassword}
+	user = models.User{
+		ID:           id,
+		Name:         name,
+		Email:        email,
+		Phone:        phone,
+		Password:     HashedPassword,
+		Role:         role,
+		Verified:     verified,
+		User_id:      user_id,
+		AccessToken:  access_token,
+		RefreshToken: refresh_token,
+		CreatedAt:    created_at,
+		UpdatedAt:    updated_at,
+	}
 
-	if (users.Name != "") && (users.Email != "") && (users.Password != "") {
-		result, err := coll.InsertOne(ctx, users)
+	if (user.Name != "") && (user.Email != "") && (user.Password != "") {
+		result, err := coll.InsertOne(ctx, user)
 		if err != nil {
 			return &helpers.ErrorField{Error: err, Message: "Internal Server Error: Could not register User", Code: 500}
 		}
-		fmt.Println(result.InsertedID, users.Password)
+		fmt.Println(result.InsertedID, user.Password)
 		http.Redirect(w, r, "/auth", http.StatusMovedPermanently)
 	}
 	return nil
@@ -111,7 +152,7 @@ func LoginUser(w http.ResponseWriter, r *http.Request) *helpers.ErrorField {
 	//a struct to unmarshal the returned JSON from the database
 	var result *models.User
 
-	helpers.LoadEnv()
+	err := godotenv.Load("app.env")
 	//Establish atlas cluster connection here
 	client, err := mongo.NewClient(options.Client().ApplyURI(os.Getenv("DB_CONNECTIONSTRING")))
 	if err != nil {
@@ -156,9 +197,13 @@ func LoginUser(w http.ResponseWriter, r *http.Request) *helpers.ErrorField {
 
 	log.Println("Email or password do not match")*/
 
+	access_token, refresh_token, _ := helpers.GenerateAllToken(result.Name, result.Email, result.User_id)
+
 	if bcrypt.CompareHashAndPassword([]byte(result.Password), []byte(password)); err != nil {
 		return &helpers.ErrorField{Error: err, Message: "", Code: 500}
 	}
+
+	helpers.UpdateAllToken(access_token, refresh_token, result.User_id)
 
 	log.Println("Authentication successful")
 	http.Redirect(w, r, "/auth", http.StatusMovedPermanently)
